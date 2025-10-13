@@ -2469,3 +2469,12 @@ document.addEventListener('keydown', (e) => {
         }
     }
 });
+
+document.addEventListener('DOMContentLoaded', function () {
+  const hedef = 'https://programci42.github.io/Mesken/';
+  if (window.location.href !== hedef) {
+    // replace() ile geçmişe kayıt eklemeden yönlendirir
+    window.location.replace(hedef);
+  }
+});
+
