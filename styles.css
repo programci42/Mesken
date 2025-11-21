@@ -949,6 +949,24 @@ body {
     margin-top: 5px;
 }
 
+@media (max-width: 768px) {
+    .conversations-panel {
+        width: 280px;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+
+    .message {
+        max-width: 85%;
+    }
+
+    .notification {
+        min-width: 250px;
+    }
+}
+
 /* Media Modal */
 .media-modal {
     position: fixed;
@@ -1330,6 +1348,14 @@ input, textarea, [contenteditable] {
     box-shadow: 0 6px 20px rgba(74, 144, 226, 0.4);
 }
 
+/* Mobil cihazlarda */
+@media (max-width: 768px) {
+    .panel-toggle-btn {
+        left: 10px;
+        top: 80px;
+    }
+}
+
 /* Message Delete Button */
 .message-delete-container {
     position: relative;
@@ -1354,6 +1380,17 @@ input, textarea, [contenteditable] {
     animation: slideUp 0.3s ease;
     z-index: 10;
     white-space: nowrap;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .message-delete-btn:hover {
@@ -1873,6 +1910,17 @@ input, textarea, [contenteditable] {
     background: var(--border);
 }
 
+@media (max-width: 768px) {
+    .profile-upload-buttons {
+        width: 100%;
+    }
+    
+    .profile-upload-btn {
+        flex: 1;
+        min-width: 120px;
+    }
+}
+
 /* Avatar'lar için ortak stil - mevcut avatar class'larının yanına ekle */
 .online-user-avatar,
 .conversation-avatar,
@@ -1890,792 +1938,55 @@ input, textarea, [contenteditable] {
     font-size: 0 !important;
 }
 
-/* Panel overlay for mobile - başlangıçta gizli */
-.panel-overlay {
-    display: none;
+.notification-mark-read, .notification-close {
+    position: absolute;
+    top: 5px;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: bold;
+    transition: all 0.2s ease;
 }
 
-/* ============================================
-   RESPONSIVE DESIGN - MOBILE FIRST
-   ============================================ */
-
-/* Tablet ve küçük ekranlar (768px ve altı) */
-@media (max-width: 768px) {
-    /* Genel ayarlar */
-    body {
-        font-size: 14px;
-    }
-
-    /* Auth Container */
-    .auth-container {
-        padding: 10px;
-    }
-
-    .auth-box {
-        padding: 25px;
-        max-width: 100%;
-    }
-
-    .auth-box h1 {
-        font-size: 1.5em;
-        margin-bottom: 20px;
-    }
-
-    /* Form elemanları */
-    .form-row {
-        grid-template-columns: 1fr;
-        gap: 15px;
-    }
-
-    .form-group input,
-    .form-group select {
-        padding: 10px 12px;
-        font-size: 16px; /* iOS zoom'u önlemek için */
-    }
-
-    .btn {
-        padding: 12px;
-        font-size: 0.95em;
-    }
-
-    /* Online Bar */
-    .online-bar-wrapper {
-        position: relative;
-    }
-
-    .online-bar {
-        padding: 10px 50px 10px 10px;
-        gap: 10px;
-    }
-
-    .online-label {
-        font-size: 0.85em;
-        margin-right: 5px;
-    }
-
-    .online-user {
-        min-width: 70px;
-        padding: 6px;
-    }
-
-    .online-user-avatar {
-        width: 45px;
-        height: 45px;
-        font-size: 1.1em;
-        border-width: 2px;
-    }
-
-    .online-user-name {
-        font-size: 0.75em;
-    }
-
-    .online-user-details {
-        font-size: 0.65em;
-    }
-
-    .unread-badge {
-        font-size: 0.65em;
-        min-width: 18px;
-        height: 18px;
-        top: -3px;
-        right: -3px;
-    }
-
-    /* Scroll buttons */
-    .online-scroll-btn {
-        width: 35px;
-        height: 35px;
-        font-size: 1.5em;
-    }
-
-    .online-scroll-btn.left {
-        left: 5px;
-    }
-
-    .online-scroll-btn.right {
-        right: 5px;
-    }
-
-    /* Conversations Panel - Mobile Overlay */
-    .conversations-panel {
-        position: fixed;
-        left: -100%;
-        top: 0;
-        width: 85%;
-        max-width: 320px;
-        height: 100vh;
-        z-index: 1000;
-        transition: left 0.3s ease;
-        box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3);
-    }
-
-    .conversations-panel.open {
-        left: 0;
-    }
-
-    .panel-toggle-btn {
-        position: fixed !important;
-        left: 10px !important;
-        top: 70px;
-        z-index: 1001;
-        width: 40px;
-        height: 40px;
-        font-size: 1.2em;
-    }
-
-    .conversations-panel.open ~ .panel-toggle-btn {
-        left: calc(85% - 30px) !important;
-    }
-
-    /* Panel overlay for mobile */
-    .panel-overlay {
-        display: none;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.5);
-        z-index: 999;
-    }
-
-    .panel-overlay.active {
-        display: block;
-    }
-
-    .conversation-item {
-        padding: 12px;
-        margin-bottom: 6px;
-    }
-
-    .conversation-avatar {
-        width: 45px;
-        height: 45px;
-        font-size: 1.1em;
-    }
-
-    .conversation-name {
-        font-size: 0.95em;
-    }
-
-    .conversation-details {
-        font-size: 0.7em;
-    }
-
-    .conversation-preview {
-        font-size: 0.8em;
-    }
-
-    .conversation-delete-btn,
-    .conversation-download-btn {
-        width: 32px;
-        height: 32px;
-        font-size: 1em;
-        opacity: 1;
-        visibility: visible;
-    }
-
-    .conversation-download-btn {
-        right: 45px;
-    }
-
-    /* Chat Area */
-    .chat-area {
-        width: 100%;
-    }
-
-    .chat-header {
-        padding: 12px 15px;
-    }
-
-    .chat-header-avatar {
-        width: 45px;
-        height: 45px;
-        font-size: 1.2em;
-    }
-
-    .chat-header-info h3 {
-        font-size: 1.1em;
-    }
-
-    .chat-header-details {
-        font-size: 0.8em;
-    }
-
-    .chat-header-status {
-        font-size: 0.75em;
-    }
-
-    /* Messages */
-    .messages-container {
-        padding: 15px 10px;
-        gap: 12px;
-    }
-
-    .message {
-        max-width: 85%;
-    }
-
-    .message-avatar {
-        width: 32px;
-        height: 32px;
-        font-size: 0.85em;
-    }
-
-    .message-content {
-        padding: 10px 14px;
-        font-size: 0.95em;
-    }
-
-    .message-time {
-        font-size: 0.7em;
-    }
-
-    .message-image {
-        max-width: 250px;
-        max-height: 250px;
-    }
-
-    .message-file {
-        padding: 10px;
-    }
-
-    .file-icon {
-        font-size: 1.8em;
-        width: 45px;
-        height: 45px;
-    }
-
-    .file-name {
-        font-size: 0.9em;
-    }
-
-    .file-size {
-        font-size: 0.75em;
-    }
-
-    /* Chat Input */
-    .chat-input {
-        padding: 12px 10px;
-        gap: 8px;
-    }
-
-    .emoji-btn,
-    .file-btn {
-        width: 40px;
-        height: 40px;
-        font-size: 1.3em;
-    }
-
-    .chat-input input {
-        padding: 10px 15px;
-        font-size: 16px; /* iOS zoom önleme */
-    }
-
-    .send-btn {
-        padding: 10px 20px;
-        font-size: 0.9em;
-    }
-
-    .send-btn span:first-child {
-        display: none; /* "Gönder" yazısını gizle */
-    }
-
-    .send-icon {
-        font-size: 1.5em;
-    }
-
-    /* Emoji Picker */
-    .emoji-picker {
-        bottom: 65px;
-        left: 10px;
-        right: 10px;
-        width: auto;
-        max-width: none;
-        max-height: 350px;
-    }
-
-    .emoji-grid {
-        grid-template-columns: repeat(6, 1fr);
-        gap: 5px;
-    }
-
-    .emoji-item {
-        font-size: 1.3em;
-        padding: 6px;
-    }
-
-    /* Notifications */
-    .notification {
-        min-width: 280px;
-        max-width: calc(100% - 40px);
-        padding: 12px 15px;
-    }
-
-    .notification-avatar {
-        width: 35px;
-        height: 35px;
-        font-size: 0.9em;
-    }
-
-    .notification-title {
-        font-size: 0.95em;
-    }
-
-    .notification-message {
-        font-size: 0.85em;
-    }
-
-    /* Profile Container */
-    .profile-container {
-        padding: 15px;
-        margin: 20px auto;
-    }
-
-    .profile-box {
-        padding: 25px;
-    }
-
-    .profile-box h1 {
-        font-size: 1.5em;
-        margin-bottom: 20px;
-    }
-
-    .back-btn {
-        padding: 8px 15px;
-        font-size: 0.9em;
-    }
-
-    /* Profile Picture Section */
-    .profile-picture-preview {
-        width: 120px;
-        height: 120px;
-    }
-
-    .profile-picture-placeholder {
-        font-size: 3em;
-    }
-
-    .profile-upload-buttons {
-        width: 100%;
-        gap: 8px;
-    }
-
-    .profile-upload-btn {
-        flex: 1;
-        min-width: 110px;
-        padding: 10px 15px;
-        font-size: 0.9em;
-    }
-
-    /* Modals */
-    .media-modal-content,
-    .profile-modal-content {
-        width: 95%;
-        max-width: 95%;
-        max-height: 95vh;
-        border-radius: 12px;
-    }
-
-    .media-modal-header,
-    .profile-modal-header {
-        padding: 12px 15px;
-        cursor: default;
-    }
-
-    .media-modal-title,
-    .profile-modal-title {
-        font-size: 1em;
-    }
-
-    .modal-btn {
-        width: 32px;
-        height: 32px;
-        font-size: 1.1em;
-    }
-
-    .media-modal-body {
-        padding: 15px;
-    }
-
-    .media-modal-body img,
-    .media-modal-body video {
-        max-height: calc(95vh - 80px);
-    }
-
-    /* Profile Modal */
-    .profile-modal-body {
-        padding: 20px;
-    }
-
-    .profile-modal-avatar {
-        width: 100px;
-        height: 100px;
-        font-size: 2.5em;
-        border-width: 3px;
-    }
-
-    .profile-modal-info h2 {
-        font-size: 1.5em;
-        margin-bottom: 20px;
-    }
-
-    .profile-detail-item {
-        padding: 10px 12px;
-        font-size: 0.9em;
-    }
-
-    .profile-detail-icon {
-        font-size: 1.2em;
-        width: 25px;
-        margin-right: 10px;
-    }
-
-    .profile-detail-label {
-        min-width: 80px;
-        font-size: 0.9em;
-    }
-
-    .profile-detail-value {
-        font-size: 0.9em;
-    }
-
-    /* Custom Modals */
-    .custom-modal-content {
-        width: 95%;
-        max-width: 95%;
-    }
-
-    .custom-modal-header {
-        padding: 20px;
-    }
-
-    .custom-modal-icon {
-        font-size: 1.8em;
-        width: 45px;
-        height: 45px;
-    }
-
-    .custom-modal-title {
-        font-size: 1.2em;
-    }
-
-    .custom-modal-body {
-        padding: 25px 20px;
-        font-size: 1em;
-    }
-
-    .custom-modal-footer {
-        padding: 15px 20px;
-        gap: 10px;
-    }
-
-    .custom-modal-btn {
-        padding: 10px 25px;
-        font-size: 0.95em;
-        min-width: 90px;
-    }
-
-    /* Camera Modal */
-    .camera-modal-content {
-        width: 95%;
-        max-width: 95%;
-        padding: 15px;
-    }
-
-    .camera-modal-title {
-        font-size: 1.2em;
-    }
-
-    .camera-controls {
-        flex-wrap: wrap;
-        gap: 8px;
-    }
-
-    .camera-btn {
-        padding: 12px 20px;
-        font-size: 0.95em;
-        min-width: 100px;
-    }
-
-    /* Empty State */
-    .empty-state {
-        padding: 40px 15px;
-    }
-
-    .empty-state-icon {
-        font-size: 3em;
-    }
-
-    .empty-state h3 {
-        font-size: 1.2em;
-    }
-
-    .empty-state p {
-        font-size: 0.9em;
-    }
-
-    /* Message Delete Button */
-    .message-delete-btn {
-        padding: 6px 12px;
-        font-size: 0.8em;
-        bottom: -32px;
-    }
+.notification-mark-read {
+    right: 30px;
+    background: var(--success);
+    color: white;
 }
 
-/* Çok küçük telefonlar (480px ve altı) */
-@media (max-width: 480px) {
-    /* Auth */
-    .auth-box {
-        padding: 20px;
-    }
-
-    .auth-box h1 {
-        font-size: 1.3em;
-    }
-
-    /* Online Bar */
-    .online-user {
-        min-width: 65px;
-    }
-
-    .online-user-avatar {
-        width: 40px;
-        height: 40px;
-    }
-
-    .online-user-name {
-        font-size: 0.7em;
-    }
-
-    .online-user-details {
-        font-size: 0.6em;
-    }
-
-    /* Conversations */
-    .conversations-panel {
-        width: 90%;
-    }
-
-    .panel-header h2 {
-        font-size: 1.1em;
-    }
-
-    .profile-btn {
-        padding: 6px 12px;
-        font-size: 0.85em;
-    }
-
-    .conversation-avatar {
-        width: 40px;
-        height: 40px;
-    }
-
-    .conversation-delete-btn,
-    .conversation-download-btn {
-        width: 30px;
-        height: 30px;
-        font-size: 0.95em;
-    }
-
-    .conversation-download-btn {
-        right: 40px;
-    }
-
-    /* Chat Header */
-    .chat-header {
-        padding: 10px 12px;
-    }
-
-    .chat-header-avatar {
-        width: 40px;
-        height: 40px;
-        font-size: 1.1em;
-    }
-
-    .chat-header-info h3 {
-        font-size: 1em;
-    }
-
-    .chat-header-details {
-        font-size: 0.75em;
-    }
-
-    /* Messages */
-    .messages-container {
-        padding: 12px 8px;
-    }
-
-    .message {
-        max-width: 90%;
-    }
-
-    .message-avatar {
-        width: 30px;
-        height: 30px;
-        font-size: 0.8em;
-    }
-
-    .message-content {
-        padding: 8px 12px;
-        font-size: 0.9em;
-    }
-
-    .message-image {
-        max-width: 220px;
-        max-height: 220px;
-    }
-
-    /* Chat Input */
-    .chat-input {
-        padding: 10px 8px;
-        gap: 6px;
-    }
-
-    .emoji-btn,
-    .file-btn {
-        width: 38px;
-        height: 38px;
-        font-size: 1.2em;
-    }
-
-    .send-btn {
-        padding: 10px 15px;
-    }
-
-    /* Emoji Picker */
-    .emoji-picker {
-        max-height: 300px;
-    }
-
-    .emoji-picker-content {
-        padding: 12px;
-    }
-
-    .emoji-grid {
-        grid-template-columns: repeat(5, 1fr);
-    }
-
-    .emoji-item {
-        font-size: 1.2em;
-        padding: 5px;
-    }
-
-    /* Notifications */
-    .notifications-container {
-        top: 10px;
-        right: 10px;
-        gap: 8px;
-    }
-
-    .notification {
-        min-width: 260px;
-        padding: 10px 12px;
-    }
-
-    /* Profile */
-    .profile-box {
-        padding: 20px;
-    }
-
-    .profile-picture-preview {
-        width: 100px;
-        height: 100px;
-    }
-
-    .profile-upload-btn {
-        font-size: 0.85em;
-        padding: 8px 12px;
-        min-width: 100px;
-    }
-
-    /* Modals */
-    .custom-modal-header {
-        padding: 15px;
-    }
-
-    .custom-modal-title {
-        font-size: 1.1em;
-    }
-
-    .custom-modal-body {
-        padding: 20px 15px;
-        font-size: 0.95em;
-    }
-
-    .custom-modal-btn {
-        padding: 8px 20px;
-        font-size: 0.9em;
-        min-width: 80px;
-    }
-
-    /* Profile Modal */
-    .profile-modal-avatar {
-        width: 90px;
-        height: 90px;
-        font-size: 2.2em;
-    }
-
-    .profile-modal-info h2 {
-        font-size: 1.3em;
-    }
-
-    .profile-detail-item {
-        padding: 8px 10px;
-        font-size: 0.85em;
-    }
+.notification-close {
+    right: 5px;
+    background: var(--danger);
+    color: white;
 }
 
-/* Landscape mode için özel ayarlar */
-@media (max-height: 500px) and (orientation: landscape) {
-    .messages-container {
-        padding: 10px;
-    }
-
-    .chat-header {
-        padding: 8px 12px;
-    }
-
-    .chat-input {
-        padding: 8px 10px;
-    }
-
-    .emoji-picker {
-        max-height: 250px;
-    }
-
-    .profile-modal-content,
-    .media-modal-content {
-        max-height: 98vh;
-    }
+.notification-mark-read:hover, .notification-close:hover {
+    transform: scale(1.1);
 }
 
-/* Touch device optimizations */
-@media (hover: none) and (pointer: coarse) {
-    /* Tüm tıklanabilir elemanlar için daha büyük hedef alanları */
-    .btn,
-    .emoji-btn,
-    .file-btn,
-    .send-btn,
-    .online-user,
-    .conversation-item,
-    .modal-btn,
-    .custom-modal-btn {
-        min-height: 44px; /* Apple'ın önerdiği minimum dokunma alanı */
-    }
+.notification-unread-count {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    background: var(--danger);
+    color: white;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: bold;
+}
 
-    /* Hover efektlerini devre dışı bırak */
-    .conversation-item:hover,
-    .online-user:hover,
-    .emoji-item:hover,
-    .notification:hover {
-        transform: none;
-    }
-
-    /* Active states for better feedback */
-    .btn:active,
-    .send-btn:active,
-    .modal-btn:active {
-        transform: scale(0.95);
-    }
+@keyframes notificationPulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
 }
